@@ -39,3 +39,31 @@
 \usepackage{microtype}
 
 \usepackage{multicol}
+
+\usepackage{listings}
+\lstset{
+	basicstyle=\ttfamily\footnotesize,
+	columns=fullflexible,
+	breaklines=true,
+	frame=single,
+	rulecolor=\color{gray},
+	keywordstyle=\color{myblue}\bfseries,
+	commentstyle=\color{gray}\itshape,
+	stringstyle=\color{orange},
+	showstringspaces=false,
+	tabsize=2,
+}
+\lstdefinelanguage{yaml}{
+	morekeywords={true,false,null,yes,no},
+	sensitive=false,
+	morecomment=[l]{\#},
+	morestring=[b]",
+	morestring=[b]'
+}
+\lstdefinelanguage{hcl}{
+	morekeywords={resource, variable, output, id, var},
+	sensitive=false,
+	morecomment=[l]{\#},
+	morestring=[b]",
+	morestring=[b]'
+}

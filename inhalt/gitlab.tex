@@ -1,0 +1,48 @@
+\section{GitLab}
+Example GitLab pipeline:
+\begin{lstlisting}[language=yaml]
+stages:
+  - build
+  - test
+  - deploy
+cache:
+  paths:
+    - .cache/
+build:
+  stage: build
+  script:
+    - echo "Building..."
+    - mkdir -p artifacts && echo "artifact" > artifacts/output.txt
+  artifacts:
+    paths:
+      - artifacts/
+    expire_in: 1 hour
+test:
+  stage: test
+  dependencies:
+    - build
+  script:
+    - cat artifacts/output.txt
+deploy_staging:
+  stage: deploy
+  environment:
+    name: staging
+    url: https://staging.example.com
+    on_stop: stop_staging # Unstages the env
+  script:
+    - cat k8.yaml | envsubst | kubectl apply -f -
+  artifacts:
+    expire_in: 1 hour
+stop_staging:
+  stage: deploy
+  environment:
+    name: staging
+    action: stop
+  script:
+    - echo "Stopping staging"
+\end{lstlisting}
+\subsection{Environements}
+Describe where the code gets deployed (e.g. Local, Integration, Testing, Staging, Production). Can be linked to a K8 cluster (needs to be set up via GitLab UI):
+\subsection{Push- vs. Pull-Based Deployments}
+\textbf{Push-Based:} + Easy to use, + flexible deployment targets, - firewall needs to be opened, - pipeline needs to be adjusted for new environements \textbf{Pull-Based:} + no need for open firewall, + better scaling, - agent needs to be installed in every cluster
+% TODO: gitlab runner section
