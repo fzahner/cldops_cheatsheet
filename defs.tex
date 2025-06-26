@@ -1,0 +1,41 @@
+\usepackage{xcolor}
+\definecolor{myblue}{cmyk}{1,.72,0,.38}
+
+\usepackage{tikz}
+\usetikzlibrary{shapes,positioning,arrows,fit,calc,graphs,graphs.standard}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0.4pt}
+\fancyhead[C]{%
+	\footnotesize
+	\sffamily
+	Hilfszettel CldOps \quad von Fabio~Z. \quad Seite~\thepage~von~2
+}
+
+\usepackage{sectsty}
+\sectionfont{\color{myblue}\sffamily\small\bfseries}
+\subsectionfont{\sffamily\bfseries}
+
+\everymath{\color{myblue}}
+\everydisplay{\color{myblue}}
+
+\renewcommand{\baselinestretch}{0.8}
+\setlength{\parindent}{0pt}
+
+\usepackage{mdframed}
+\mdfdefinestyle{header}{
+	linecolor=gray,
+	linewidth=1pt,
+	leftmargin=0mm,
+	rightmargin=0mm,
+	skipbelow=0mm,
+	skipabove=0mm
+}
+
+\usepackage{geometry}
+\geometry{top=0mm,bottom=1mm,left=0mm,right=1mm}
+\usepackage{microtype}
+
+\usepackage{multicol}
