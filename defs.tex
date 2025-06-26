@@ -1,9 +1,27 @@
+% Page geometry
+\usepackage{geometry}
+\geometry{top=3mm,bottom=1mm,left=3mm,right=3mm}
+
+% General packages and commands
+\usepackage{microtype}
+\usepackage{multicol}
+
+\everymath{\color{myblue}} % All mathblocks blue
+\everydisplay{\color{myblue}} % All display math blue
+
+\renewcommand{\baselinestretch}{0.8} % Scales line-to-line spacing
+\setlength{\parindent}{0pt} % No first-line indent at paragraph beginning
+
+% Set custom colors
 \usepackage{xcolor}
 \definecolor{myblue}{cmyk}{1,.72,0,.38}
+\definecolor{mylightblue}{cmyk}{1,.22,0,.20}
 
+% Load tikz with extensions
 \usepackage{tikz}
 \usetikzlibrary{shapes,positioning,arrows,fit,calc,graphs,graphs.standard}
 
+% Header
 \usepackage{fancyhdr}
 \pagestyle{fancy}
 \fancyhf{}
@@ -14,16 +32,31 @@
 	Hilfszettel CldOps \quad von Fabio~Z. \quad Seite~\thepage~von~2
 }
 
-\usepackage{sectsty}
-\sectionfont{\color{myblue}\sffamily\small\bfseries}
-\subsectionfont{\sffamily\bfseries}
+% Restyling (sub)sections
+\usepackage{titlesec}
+\titleformat{\section}
+{\sffamily\bfseries\small\color{myblue}}
+{\thesection}{1em}{}
+\titleformat{\subsection}
+{\sffamily\bfseries\footnotesize\color{mylightblue}}
+{\thesubsection}{1em}{}
+\titleformat{\subsubsection}
+{\sffamily\bfseries\scriptsize}
+{\thesubsubsection}{1em}{}
 
-\everymath{\color{myblue}}
-\everydisplay{\color{myblue}}
+% Margins of subsections
+\usepackage[compact,nostruts]{titlesec}
+% {left}{before}{after}
+\titlespacing*{\section}{0pt}{3pt}{2pt}
+\titlespacing*{\subsection}{0pt}{3pt}{1pt}
+\titlespacing*{\subsubsection}{0pt}{1pt}{1pt}
 
-\renewcommand{\baselinestretch}{0.8}
-\setlength{\parindent}{0pt}
+% Margins of itemize & enumerates
+\usepackage{enumitem}
+\setlist[itemize]{nosep, topsep=0pt}
+\setlist[enumerate]{nosep, topsep=0pt}
 
+% For frames
 \usepackage{mdframed}
 \mdfdefinestyle{header}{
 	linecolor=gray,
@@ -34,12 +67,7 @@
 	skipabove=0mm
 }
 
-\usepackage{geometry}
-\geometry{top=0mm,bottom=1mm,left=0mm,right=1mm}
-\usepackage{microtype}
-
-\usepackage{multicol}
-
+% Package for code blocks
 \usepackage{listings}
 \lstset{
 	basicstyle=\ttfamily\footnotesize,
