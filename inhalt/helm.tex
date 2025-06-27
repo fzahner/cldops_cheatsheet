@@ -1,0 +1,21 @@
+\section{Helm}
+A package manager for K8, enabling to reuse configurations for common use cases (DB, monitoring). Helm provides \textit{Charts}, which are a collection of yaml files describing different K8 Objects. When deploying a chart on your cluster, it is called a \textit{Release}. Charts are availiable through different \textit{Repositories}. \\
+Helm charts use templating (like \texttt{\{\{Release.Name\}\}}, for information about package, or \texttt{\{\{.Values.xyz.abc | default "example"\}\}} for information passed by values.yaml or via commandline \texttt{-set})
+
+\subsection{Commands}
+
+\begin{lstlisting}[language=sh]
+# Repo commands
+helm repo list
+helm repo add <repo> <url>
+helm repo rm <repo>
+
+helm list # list installed releases
+helm install -f values.yaml <release> <chart> # install with custom values
+helm show <chart | readme | values | all> <chartname | repo>
+
+helm upgrade <release> <chart>
+helm rollback <release> <revision>
+
+\end{lstlisting}
+% TODO: creating a own helm chart (w. 6, s.31) and dependencies
