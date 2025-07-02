@@ -35,7 +35,7 @@ In a network of servers, one server is the \textbf{host}. The host can connect t
         state: restarted
 \end{lstlisting}
 \subsection{Vaults}
-Vaults can be used to encrypt data: The file \texttt{vault.yaml} with the contents \texttt{vault\_password: "supersecret"} can be encrypted using \texttt{ansible-vault encrypt vault.yml} and then included in a play: \texttt{ansible-playbook playbook.yml --ask-vault-pass}
+Vaults can be used to encrypt data: The file \texttt{vault.yaml} with the contents \texttt{vault\string_password: "mysecret"} can be encrypted using \texttt{ansible-vault encrypt vault.yml} and then included in a play: \texttt{ansible-playbook playbook.yml --ask-vault-pass}
 To create a file, use \texttt{ansible-vault create foo.yaml}
 \subsection{Collections, Roles \& Tags}
 

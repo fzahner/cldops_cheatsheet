@@ -1,5 +1,4 @@
-\section{GitLab}
-Example GitLab pipeline:
+\section{GitLab Piplines}
 \begin{lstlisting}[language=yaml]
 stages:
   - build
@@ -41,7 +40,7 @@ stop_staging:
   script:
     - echo "Stopping staging"
 \end{lstlisting}
-\subsection{Environements}
+\subsection{Environments}
 Describe where the code gets deployed (e.g. Local, Integration, Testing, Staging, Production). Can be linked to a K8 cluster (needs to be set up via GitLab UI):
 \subsection{Push- vs. Pull-Based Deployments}
 \textbf{Push-Based:} + Easy to use, + flexible deployment targets, - firewall needs to be opened, - pipeline needs to be adjusted for new environements \textbf{Pull-Based:} + no need for open firewall, + better scaling, - agent needs to be installed in every cluster

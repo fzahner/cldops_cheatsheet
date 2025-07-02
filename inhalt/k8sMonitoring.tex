@@ -25,4 +25,4 @@ rate(mysql_global_status_commands_total{command=~"(select)"}[5m]) * 100 > 35 -- 
 \textit{Also ELK, where Logstash replaces Fluentd} \\
 \textbf{Elasticsearch:} Search engine written in Java, works with indicies to handle huge amounts of data, especially JSON documents. \\
 \textbf{Fluentd:} Data Collection written in Ruby. Collects, filters and buffers logs from different sources, tries to store logging data as JSON. Typically runs as DaemonSet on each node and forwards Data to Elasticsearch. \\
-\textbf{Kibana:} Similar to Grafana, Kibana can display data living in Elasticsearch. \\
+\textbf{Kibana:} Similar to Grafana, Kibana can display data living in Elasticsearch.

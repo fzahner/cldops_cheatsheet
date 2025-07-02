@@ -1,6 +1,6 @@
 % Page geometry
 \usepackage{geometry}
-\geometry{top=3mm,bottom=1mm,left=3mm,right=3mm}
+\geometry{top=3mm,bottom=3mm,left=3mm,right=3mm}
 
 % General packages and commands
 \usepackage{microtype}
@@ -22,15 +22,16 @@
 \usetikzlibrary{shapes,positioning,arrows,fit,calc,graphs,graphs.standard}
 
 % Header
-\usepackage{fancyhdr}
-\pagestyle{fancy}
-\fancyhf{}
-\renewcommand{\headrulewidth}{0.4pt}
-\fancyhead[C]{%
-	\footnotesize
-	\sffamily
-	Hilfszettel CldOps \quad von Fabio~Z. \quad Seite~\thepage~von~2
-}
+% \usepackage{fancyhdr}
+% \pagestyle{fancy}
+% \usepackage{lastpage}
+% \fancyhf{}
+% \renewcommand{\headrulewidth}{0.4pt}
+% \fancyhead[C]{%
+% 	\footnotesize
+% 	\sffamily
+% 	Hilfszettel CldOps \quad von Fabio~Z. \quad Seite~\thepage~von~\pageref{LastPage}
+% }
 
 % Restyling (sub)sections
 \usepackage[compact,nostruts]{titlesec}
@@ -47,7 +48,7 @@
 % Margins of subsections
 % {left}{before}{after}
 \titlespacing*{\section}{0pt}{3pt}{2pt}
-\titlespacing*{\subsection}{0pt}{3pt}{1pt}
+\titlespacing*{\subsection}{0pt}{2pt}{1pt}
 \titlespacing*{\subsubsection}{0pt}{1pt}{1pt}
 
 % Margins of itemize & enumerates

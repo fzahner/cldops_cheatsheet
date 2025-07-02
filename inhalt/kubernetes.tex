@@ -56,10 +56,6 @@ Used to separate resources. Only resources in same namespace can communicate dir
 Rolling updates can be used in order to ensure that enough pods are always running.
 Rolling updates can be using maxUnavailable (maximum No. of Pods upgrading at the same time) and maxSurge (max No. of Pods allowed to run beyond specified No. of replica)
 
-\begin{lstlisting}[language=yaml]
-spec:
-\end{lstlisting}
-
 \subsection{Scheduling}
 The \texttt{kube-scheduler} determines which nodes run which Pods. We can influence this decision process:
 
@@ -76,6 +72,6 @@ To evaluate if a Node is eligible to run a Pod, the following things are conside
 % TODO: starting from 25, s.60: storage, secrets, configmap, probes
 
 \subsection{Commands}
-\textbf{Apply a manifest.yaml:} \texttt{kubectl {create|apply|replace} -f manifest.yaml} \\
-\textbf{Connecting to a Pod:} \texttt{kubectl exec -it nginx-xxx -- sh}
-\textbf{Undo rollout:} \texttt{kubectl rollout undo}
+Apply a manifest.yaml: \texttt{kubectl {create|apply|replace} -f manifest.yaml} \\
+Connecting to a Pod: \texttt{kubectl exec -it nginx-xxx -- sh}
+Undo rollout: \texttt{kubectl rollout undo}
