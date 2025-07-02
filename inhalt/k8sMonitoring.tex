@@ -1,0 +1,28 @@
+\section{K8s Montoring \& Logging}
+\textbf{Monitoring:} metrics, alerts, trends – quantitative (resource usage, request counts, error rates)\\
+\textbf{Logging:} detailed event records – qualitative (stack traces, system messages, business events) \\
+Kubernetes does not persist metrics out of the box. \texttt{kubectl logs} only persists logs for running containers, logs lost when container dies.
+\textbf{Agent-Based Monitoring/Logging:} A push-based system where software installed on server collects data and sends it to a central monitoring server. \textbf{Agentless Monitoring/Logging:} A central monitoring server requests data from the devices being monitored.
+
+\begin{mdframed}
+	\textbf{Example Stack:} \textit{Monitoring:} Exporters (custom for each app, exposes metrics), Prometheus (metrics collection), Grafana (dashboard), Alertmanager (rule-based alerting) \textit{Logging:} Fluent bit/fluentd (log collection), Loki (aggregation), Grafana (visualisation)
+	\textit{Alternative: EFK (see subsection EFK)}
+\end{mdframed}
+
+\subsection{Monitoring}
+\textbf{Prometheus:} Written in Go, stores data in a time-series DB. Scrapes metric endpoints over HTTP. Has client libraries to instrument custom apps written in Go, Java, Python, Node.js, .NET, \dots. Uses PromQL language to aggragate data across labels. Some PromQL examples:
+\begin{lstlisting}[language=sql]
+sum by (namespace) (kube_pod_info) -- count of pods per cluster and namespace
+sum by (namespace) (kube_pod_status_ready{condition="false"}) -- count of pods not ready by namespace
+rate(mysql_global_status_commands_total{command=~"(select)"}[5m]) * 100 > 35 -- Rate of MySQL SELECT commands over last 5 minutes
+-- The > 35 can be used to only display outliers (threshold/alert conditions)
+\end{lstlisting}
+
+\subsection{Logging}
+\textbf{Node-Level vs Application Logging:} With application logging, the container of the app itself is directly communicating with the Logging Backend. In Node-Level logging, the application writes to a log-file, which the logging agent periodically reads and relays to the logging backend. The same priniples also apply to side-car logging, where in Sidecar streaming, the sidecar writes to a log file, while a sidecar logging agent communicates with the backend directly.
+
+\subsection{EFK stack}
+\textit{Also ELK, where Logstash replaces Fluentd} \\
+\textbf{Elasticsearch:} Search engine written in Java, works with indicies to handle huge amounts of data, especially JSON documents. \\
+\textbf{Fluentd:} Data Collection written in Ruby. Collects, filters and buffers logs from different sources, tries to store logging data as JSON. Typically runs as DaemonSet on each node and forwards Data to Elasticsearch. \\
+\textbf{Kibana:} Similar to Grafana, Kibana can display data living in Elasticsearch. \\

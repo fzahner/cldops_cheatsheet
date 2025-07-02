@@ -1,0 +1,59 @@
+\section{Kustomize}
+
+The kustomize.yaml defines the resources and transformations. \textit{Transformers} transform your manifests by allowing common fields in the resources to be specified in one place.
+
+In case you want multiple variations on a common resource, the files in \texttt{base/} can declare common elements and the files in \texttt{overlays/} will declare differences.
+
+\textbf{Patches} allow you to change (patch) already set values.
+
+Traditionally, when editing ConfigMaps or Secrets, the deployment did not change, therefore no pods were restarted. \textbf{Generators} allow to define values in the \texttt{kustomize.yaml} file, where changes get detected and pods automatically restarted.
+\begin{lstlisting}[language=yaml]
+# A sample kustomize.yaml file
+apiVersion: kustomize.config.k8s.io/v1
+kind: Kustomization
+resources:
+  - deployment.yaml
+  - service.yaml
+# Transformers:
+namePrefix: dev-
+namespace: my-namespace
+commonLabels:
+  app: my-app
+# Patch:
+patches:
+- patch: |-
+    - op: replace
+      path: /metadata/name
+      value: nginx-server
+  target:
+    kind: Service
+    name: nginx-app
+# Generator:
+configMapGenerator:
+  - name: app-config
+    literals:
+      - LOG_LEVEL=debug
+# Adding component from component example below
+components:
+- ../../components/mysql
+\end{lstlisting}
+
+\subsection{Components}
+
+Components encapsulate a set of modifications. Below is a example component which adds a mysql database. This component can then be included in overlays, base directories (see above) or other components.
+
+\begin{lstlisting}[language=yaml]
+# Sample component file. Path: components/mysql/kustomization.yaml
+apiVersion: kustomize.config.k8s.io/v1alpha1
+kind: Component # not Kustomization
+resources: # resource files are also under /mysql/
+- deployment.yaml
+- service.yaml
+\end{lstlisting}
+
+\subsection{Commands}
+
+\begin{lstlisting}[language=sh]
+kustomize build <dir> # Renders manifests.
+kubectl apply -k <dir> # Applies kustomization via kubectl.
+\end{lstlisting}

@@ -11,7 +11,8 @@
 \textbf{ReplicaSet:} Makes sure that a specified number of replica pods are running. In practice, deplomyments are used. \\
 \textbf{Deployment:} Allows to manage one or multiple Pods. \\
 \textbf{Service:} API Resource to expose logical set of Pods in the namespace. Acts as a load balancer (round-robin). \\
-\textbf{Ingress:} Provides external Access to a Service.
+\textbf{Ingress:} Provides external Access to a Service. \\
+\textbf{DaemonSet:} Ensures that all (or some) Nodes run a copy of a pod. This can be used for running supporting applications (logs, storage)
 \begin{lstlisting}[language=yaml]
 apiVersion: apps/v1
 kind: Deployment
