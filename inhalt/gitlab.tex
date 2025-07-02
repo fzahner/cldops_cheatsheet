@@ -27,7 +27,7 @@ deploy_staging:
   environment:
     name: staging
     url: https://staging.example.com
-    on_stop: stop_staging # Unstages the env
+    on_stop: stop_staging # Unstages env
   script:
     - cat k8.yaml | envsubst | kubectl apply -f -
   artifacts:
