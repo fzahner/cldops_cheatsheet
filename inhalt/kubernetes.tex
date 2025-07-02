@@ -1,14 +1,14 @@
 \section{Kubernetes (K8)}
 \begin{mdframed}
-	\textbf{K8 Objects:} Persistent entities which signal a intent (e.g. for something to be created on the cluster) \\
-	\textbf{K8 Controller:} Tracks a Object and is responsible for bringing the current State closer to the desired State.
+	\textbf{K8 Objects:} Persistent entities which signal an intent (e.g. for something to be created on the cluster) \\
+	\textbf{K8 Controller:} Tracks an Object and is responsible for bringing the current State closer to the desired State.
 \end{mdframed}
 
 \textbf{Pod:} Represents a process running on your cluster. Should contain one container, multiple are possible. \\
 \textbf{Sidecars:} Sidecars are containers that run along the primary container in the same pod. Example use cases might be logging, security, data synchronization. \\
 \textbf{Init Containers:} Similar to sidecars, but run and finish before app containers.
 \textbf{Volume:} Assigns physical Storage to a Pod \\
-\textbf{ReplicaSet:} Makes sure that a specified number of replica pods are running. In practice, deplomyments are used. \\
+\textbf{ReplicaSet:} Makes sure that a specified number of replica pods are running. In practice, deployments are used. \\
 \textbf{Deployment:} Allows to manage one or multiple Pods. \\
 \textbf{Service:} API Resource to expose logical set of Pods in the namespace. Acts as a load balancer (round-robin). \\
 \textbf{Ingress:} Provides external Access to a Service. \\
@@ -66,8 +66,8 @@ spec:
     disktype: ssd # this label needs to be in pod.spec
 \end{lstlisting}
 
-To evaluate if a Node is eligible to run a Pod, the following things are considered: Port availability, CPU \& Memory resources, available volumes, specified labels. Additionally, scoring is used to evaluate remaining nodes with criteria: pods of same service should be on diffrent nodes, nodes with few used resources are prioritized, node affinity. \\
-\textit{Taints} can also be applied on nodes and pods, pods wont be deployed on nodes with matching taints. \textit{Tolerations} can be used to make exceptions to taints. Types of taints: \textit{NoSchedule, PreferNoSchedule, NoExecute}
+To evaluate if a Node is eligible to run a Pod, the following things are considered: Port availability, CPU \& Memory resources, available volumes, specified labels. Additionally, scoring is used to evaluate remaining nodes with criteria: pods of same service should be on different nodes, nodes with few used resources are prioritized, node affinity. \\
+\textit{Taints} can also be applied on nodes and pods, pods won't be deployed on nodes with matching taints. \textit{Tolerations} can be used to make exceptions to taints. Types of taints: \textit{NoSchedule, PreferNoSchedule, NoExecute}
 
 % TODO: starting from 25, s.60: storage, secrets, configmap, probes
 

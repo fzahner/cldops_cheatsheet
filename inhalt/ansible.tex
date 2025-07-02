@@ -1,5 +1,5 @@
 \section{Ansible}
-Ansible can be used to provision servers. It does not have statefiles and is idempotent, meaning it wont make changes unless it has to.
+Ansible can be used to provision servers. It does not have statefiles and is idempotent, meaning it won't make changes unless it has to.
 \subsection{Infrastructure}
 In a network of servers, one server is the \textbf{host}. The host can connect to other machines using SSH. On the host, playbooks can be written in \texttt{yaml} files. Run a playbook by using \texttt{ansible-playbook playbook.yaml}
 
@@ -40,8 +40,8 @@ To create a file, use \texttt{ansible-vault create foo.yaml}
 \subsection{Collections, Roles \& Tags}
 
 \textbf{Collections} are bundles of plugins, roles and modules. Install them using \texttt{ansible-galaxy collection install <name>}, or define a requirements.yaml to install multiple collections at once.
-\textbf{Roles} are a abstraction above playbooks, allowing to reuse configuration steps: create a role using \texttt{ansible-galaxy init <name>}, then use a role like in the example above.
-\textbf{Tags} can be used to execute a subset of tasks instead of the whole playbook. Run only specific tags by appending \texttt{--tags <name>} at the end of the ansible-playbook command. There are also two special commands: Tag \textit{always} runs every time, except when excplicitly skipped: \texttt{--skip-tags=always}. Tag \textit{never} does not run unless specified with \texttt{--tags=never}
+\textbf{Roles} are an abstraction above playbooks, allowing to reuse configuration steps: create a role using \texttt{ansible-galaxy init <name>}, then use a role like in the example above.
+\textbf{Tags} can be used to execute a subset of tasks instead of the whole playbook. Run only specific tags by appending \texttt{--tags <name>} at the end of the ansible-playbook command. There are also two special commands: Tag \textit{always} runs every time, except when explicitly skipped: \texttt{--skip-tags=always}. Tag \textit{never} does not run unless specified with \texttt{--tags=never}
 \subsection{Jinja2}
 Jinja2 is the templating engine which is used by Ansible. It is used to generate configuration files.
 % TODO: maybe add example for jinja2

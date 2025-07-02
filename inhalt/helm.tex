@@ -1,5 +1,5 @@
 \section{Helm}
-A package manager for K8, enabling to reuse configurations for common use cases (DB, monitoring). Helm provides \textit{Charts}, which are a collection of yaml files describing different K8 Objects. When deploying a chart on your cluster, it is called a \textit{Release}. Charts are availiable through different \textit{Repositories}. \\
+A package manager for K8, enabling to reuse configurations for common use cases (DB, monitoring). Helm provides \textit{Charts}, which are a collection of yaml files describing different K8 Objects. When deploying a chart on your cluster, it is called a \textit{Release}. Charts are available through different \textit{Repositories}. \\
 Helm charts use templating (like \texttt{\{\{Release.Name\}\}}, for information about package, or \texttt{\{\{.Values.xyz.abc | default "example"\}\}} for information passed by values.yaml or via commandline \texttt{-set})
 
 \subsection{Commands}

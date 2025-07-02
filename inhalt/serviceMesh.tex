@@ -4,7 +4,7 @@ A microservice is a small, independent application that handles one specific bus
 \subsection{Challenges}
 \textbf{Communication:} Services need to know all the endpoints of services they have to communicate with. A new microservice can result in many changes in existing services.
 \textbf{Security:} Communication in cluster is not secured, every service can talk to every other service in a cluster. Possible attackers have full access.
-\textbf{Monitoring:} Since services are spread out, monitoring can be tedious. Non Buissnes logic must be added to each application, adds complexity.
+\textbf{Monitoring:} Since services are spread out, monitoring can be tedious. Non Business logic must be added to each application, adds complexity.
 \subsection{Service Mesh w/ Sidecar Pattern}
 A Service Mesh uses Sidecars in all the Pods. The sidecars act as a proxy and also include additional functionality (Monitoring, Security, ...)
 
@@ -21,9 +21,9 @@ Envoy proxies in each pod authenticate each other via \textbf{mTLS} (mutual TLS:
 \subsection{Ambient Mesh}
 The Traffic Mesh with Sidecar pattern comes with some downsides: It is invasive, can lead to overallocation of resources per pod, breaks traffic.
 
-Ambient mesh solves this by removing the sidecar proxies, rather providing one zTunnel per node. These zTunnels communicate with other across nodes. They operate on Layer 4. zTunnels also authenticate each other using mTLS.
+Ambient mesh solves this by removing the sidecar proxies, rather providing one zTunnel per node. These zTunnels communicate with across nodes. They operate on Layer 4. zTunnels also authenticate each other using mTLS.
 
-Additionally, optionaly L7 waypoint proxies can be used for policy enforcements.
+Additionally, optionally L7 waypoint proxies can be used for policy enforcements.
 
 \subsection{Traffic Management}
 In istio, K8 ingress/egress are replaced by gateways, as they allow for more control.
@@ -84,8 +84,8 @@ Istio also allows all the CD\&D Deployment Strategies (see \textit{General Defin
 Istio provides and exports Prometheus metrics per default.
 
 \subsection{Security}
-\textbf{Authentication:} Services use mTLS to authencate each other. \\
-\textbf{Authorization:} Using authorizationPolicies, we get Fine-grained access control using Role-based access control (RBAC).
+\textbf{Authentication:} Services use mTLS to authenticate each other. \\
+\textbf{Authorization:} Using AuthorizationPolicies, we get Fine-grained access control using Role-based access control (RBAC).
 
 \begin{lstlisting}[language=yaml]
 # Namespace-wide mTLS enforcement using PeerAuthentication
