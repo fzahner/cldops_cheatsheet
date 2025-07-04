@@ -1,7 +1,7 @@
 \section{Service Mesh}
 \subsection{Microservices}
 A microservice is a small, independent application that handles one specific business function and communicates with other services via APIs. This approach breaks large applications into smaller, loosely-coupled services that can be developed and deployed independently. Opposite of a Monolith.
-\subsection{Challenges}
+\subsection{Problems with Microservices}
 \textbf{Communication:} Services need to know all the endpoints of services they have to communicate with. A new microservice can result in many changes in existing services.
 \textbf{Security:} Communication in cluster is not secured, every service can talk to every other service in a cluster. Possible attackers have full access.
 \textbf{Monitoring:} Since services are spread out, monitoring can be tedious. Non Business logic must be added to each application, adds complexity.

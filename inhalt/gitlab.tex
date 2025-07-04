@@ -42,6 +42,15 @@ stop_staging:
 \end{lstlisting}
 \subsection{Environments}
 Describe where the code gets deployed (e.g. Local, Integration, Testing, Staging, Production). Can be linked to a K8 cluster (needs to be set up via GitLab UI):
+
+\subsection{Cache \& Artifacts}
+\textbf{Cache:} Shared across \textit{jobs} in different \textbf{stages} and even \textbf{pipelines} (if configured). Used for speeding up tasks (e.g., restoring dependencies).
+\textbf{Artifacts:} Shared only with \textit{downstream jobs} in later \textbf{stages}. Must be explicitly declared as \texttt{dependencies} to access in later jobs. Uploaded to GitLab and optionally downloadable.
 \subsection{Push- vs. Pull-Based Deployments}
 \textbf{Push-Based:} + Easy to use, + flexible deployment targets, - firewall needs to be opened, - pipeline needs to be adjusted for new environments \textbf{Pull-Based:} + no need for open firewall, + better scaling, - agent needs to be installed in every cluster
-% TODO: gitlab runner section
+
+\subsection{GitLab Runner}
+GitLab Runner executes jobs defined in \texttt{.gitlab-ci.yml}.
+Types: \textbf{Shared} (managed by GitLab) vs. \textbf{Specific} (self-managed).
+Can run in various executors: \texttt{shell}, \texttt{docker}, \texttt{kubernetes}, etc.
+Tagged runners can restrict which jobs they pick up.

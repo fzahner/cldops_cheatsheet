@@ -1,5 +1,5 @@
 \section{Ansible}
-Ansible can be used to provision servers. It does not have statefiles and is idempotent, meaning it won't make changes unless it has to.
+Ansible can be used to provision servers. It does not have statefiles and is idempotent, meaning it won't make changes unless it has to. Ansible requires python to be installed on target machines as well as control machines (host).
 \subsection{Infrastructure}
 In a network of servers, one server is the \textbf{host}. The host can connect to other machines using SSH. On the host, playbooks can be written in \texttt{yaml} files. Run a playbook by using \texttt{ansible-playbook playbook.yaml}
 

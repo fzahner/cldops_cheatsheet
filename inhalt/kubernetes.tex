@@ -13,6 +13,7 @@
 \textbf{Service:} API Resource to expose logical set of Pods in the namespace. Acts as a load balancer (round-robin). \\
 \textbf{Ingress:} Provides external Access to a Service. \\
 \textbf{DaemonSet:} Ensures that all (or some) Nodes run a copy of a pod. This can be used for running supporting applications (logs, storage)
+\textbf{ConfigMap:} Stores configuration data as key-value pairs. Used to decouple config from code. Mounted into pods as env vars or files. Not meant for sensitive data (use Secrets instead).
 \begin{lstlisting}[language=yaml]
 apiVersion: apps/v1
 kind: Deployment
